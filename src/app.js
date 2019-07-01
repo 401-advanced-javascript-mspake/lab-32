@@ -1,17 +1,28 @@
 import React from 'react';
-import './app.css';
+import Words from './words.js';
+import Form from './form.js';
 
-function App() {
-  return (
-    <div className="app">
-      <header className="App-header">
-        <p>
-          Hello World
-        </p>
-        <p>I'm alive</p>
-      </header>
-    </div>
-  );
-}
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      words: '',
+    };
+  }
+
+  updateWords = (words) => {
+      this.setState({words});
+  };
+
+  render() {
+    return (
+      <React.Fragment>
+        <Words words={this.state.words}/>
+        <Form handleInboundWords={this.updateWords}/>
+      </React.Fragment>
+    );
+  }
+};
 
 export default App;
